@@ -5,7 +5,7 @@ services:
             io.rancher.scheduler.affinity:container_label_soft_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
             io.rancher.container.hostname_override: container_name
             io.rancher.sidekicks: es-storage{{- if eq .Values.UPDATE_SYSCTL "true" -}},es-sysctl{{- end}}
-        image: docker.elastic.co/elasticsearch/elasticsearch:5
+        image: docker.elastic.co/elasticsearch/elasticsearch::5.6.3
         environment:
             - "cluster.name=${cluster_name}"
             - "node.name=$${HOSTNAME}"
